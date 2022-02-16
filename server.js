@@ -3,6 +3,7 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts");
 
 const indexRouter = require("./routes/index");
+const authorRouter = require("./routes/authors")
 
 if(process.env.NODE_ENV !=  "production"){
     require("dotenv").config();
@@ -24,3 +25,4 @@ db.once("open",()=>{
 app.listen(process.env.PORT || 3000);
 
 app.use("/",indexRouter)
+app.use("/authors",authorRouter);
